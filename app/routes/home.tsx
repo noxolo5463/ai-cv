@@ -1,7 +1,9 @@
 import Navbar from "~/components/navbar";
 import type { Route } from "./+types/home";
+import { resumes } from "../../constants"
+import ResumeCard from "~/components/resume-card";
 
-export function meta({}: Route.MetaArgs) {
+export function meta({ }: Route.MetaArgs) {
   return [
     { title: "Resumind" },
     { name: "description", content: "Smart feedback for your dream job!" },
@@ -10,7 +12,7 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Home() {
   return <main className="bg-[url('/images/bg-main.svg')] bg-cover">
-    <Navbar/>
+    <Navbar />
     <section className="main-section">
       <div className="page-heading">
         <h1>
@@ -20,6 +22,18 @@ export default function Home() {
           Review your submissions and check AI-powered feedback.
         </h2>
       </div>
+
+      {
+        resumes.length > 0 && (
+          <div className="resume-section flex flex-col gap-y-4">
+            {
+              resumes.map((resume) => (
+                <ResumeCard key={resume.id} resume={resume} />
+              ))
+            }
+          </div>
+        )
+      }
     </section>
   </main>;
 }
