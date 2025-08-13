@@ -11,9 +11,25 @@ const Upload = () => {
     const handleFileSelect = (file: File | null) => {
         setFile(file);
     };
+    
 
     function handleSubmit(event: FormEvent<HTMLFormElement>): void {
-        throw new Error("Function not implemented.");
+        event.preventDefault();
+        const form = event.currentTarget.closest('form');
+        if (!form) return;
+
+        const formData = new FormData(form);
+        const companyName = formData.get('company-name')  as string;
+        const jobTitle = formData.get('job-title');
+        const jobDescription = formData.get('job-description');
+
+        console.log({
+            companyName,
+            jobTitle,
+            jobDescription,
+            file
+        })
+
     }
 
     return (
@@ -38,15 +54,15 @@ const Upload = () => {
                             <form id="upload-form" onSubmit={handleSubmit} className="flex flex-col gap-4 mt-8">
                                 <div className="form-div">
                                     <label htmlFor="company-name">Company Name</label>
-                                    <input type="text" id="company-name" placeholder="Company Name" />
+                                    <input type="text" id="company-name" placeholder="Company Name" name="company-name" />
                                 </div>
                                  <div className="form-div">
                                     <label htmlFor="job-title">Job Title</label>
-                                    <input type="text" id="job-title" placeholder="Job Title" />
+                                    <input type="text" id="job-title" placeholder="Job Title" name="job-title" />
                                 </div>
                                  <div className="form-div">
                                     <label htmlFor="job-description">Job Description</label>
-                                    <textarea rows={6} id="job-description" placeholder="Job Description" />
+                                    <textarea rows={6} id="job-description" placeholder="Job Description" name="job-description" />
                                 </div>
                                  <div className="form-div">
                                     <label htmlFor="uploader">Uploader</label>
