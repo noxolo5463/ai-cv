@@ -73,6 +73,7 @@ const Upload = () => {
         setStatusText('Analysis complete!');
 
         console.log(data)
+        localStorage.setItem('generatedResume', JSON.stringify(data));
         navigate(`/resume/${UuId}`);
     }
 

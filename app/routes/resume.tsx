@@ -5,6 +5,7 @@ import type { Route } from "./+types/home";
 import Summary from "~/components/summary";
 import ATS from "~/components/ats";
 import Details from "~/components/details";
+import type { Feedback } from "types";
 
 export function meta({ }: Route.MetaArgs) {
   return [

@@ -2,6 +2,7 @@
 import type { JSX } from "react";
 import { Link } from "react-router";
 import ScoreCircle from "./score-circle";
+import type { Resume } from "types";
 
 
 const ResumeCard: ({ resume }: { resume: any }) => JSX.Element = ({ resume }: { resume: Resume }) => {
